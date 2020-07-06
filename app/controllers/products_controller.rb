@@ -2,7 +2,7 @@ class ProductsController < ApplicationController
 before_action :search_item, only: [:index, :search] 
 
   def index
-    @product = Product.all
+    @products = Product.all
     set_product_column
     set_category_column
   end
