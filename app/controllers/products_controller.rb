@@ -1,21 +1,20 @@
 class ProductsController < ApplicationController
+before_action :search_item, only: [:index, :search] 
 
   def index
-    @p = Product.ransack(params[:q])
-    @product = @p.result.includes(:category)
+    @product = Product.all
     set_product_column
     set_category_column
   end
 
   def search
-    @q = Product.ransack(search_params)
-    @expect_products = @q.result.includes(:category)
+    @results = @p.result.includes(:category)
   end
 
   private
 
-  def search_params
-    params.require(:q).permit!
+  def search_item
+    @p = Product.ransack(params[:q])
   end
 
   def set_product_column
@@ -29,3 +28,5 @@ class ProductsController < ApplicationController
   end
 
 end
+
+
