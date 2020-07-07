@@ -28,5 +28,3 @@ before_action :search_item, only: [:index, :search]
   end
 
 end
-
-
